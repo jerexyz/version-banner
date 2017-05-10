@@ -25,11 +25,7 @@ if (homeReg.test(filePath)) {
 
 try {
   var pkgFile = require(path.join(process.cwd(), "package.json"));
-  var banner = `/**!
-  * ${pkgFile.name} ${pkgFile.version}  
-  * (c) 2014- ${new Date().getFullYear()} 
-  */
-  `;
+  var banner = `window["____${pkgFile.name}____version"]="${pkgFile.version}";\n`;
   prependFile(filePath, banner, err => {
     if (err) {
       console.log(err);
